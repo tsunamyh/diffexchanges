@@ -27,8 +27,8 @@ function sortOrderBooks(data) {
     if (ask && bid) {
       // [feeRiali,hajm,feettri]
       orderBooks[symbol[0]] = {
-        ask : [...ask,(ask[0]/ttrBid)],
-        bid : [...bid,(bid[0]/ttrAsk)]
+        ask : [(ask[0]/ttrBid),...ask],
+        bid : [(bid[0]/ttrAsk),...bid]
       }
     }
   })
