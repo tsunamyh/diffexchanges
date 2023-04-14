@@ -13,7 +13,7 @@ async function httpGetNobOrderBooks(symbol) {
   const response = await nobInstance.get("/orderbook/" + symbol)
 
   const orderBooks = sortOrderBooks(response.data)
-  console.log("nobOrderBooks:>", orderBooks);
+  // console.log("nobOrderBooks:>", orderBooks);
   return orderBooks
 }
 
@@ -26,6 +26,10 @@ function sortOrderBooks(data) {
     const bid = data[symbol[0]].asks[0]
     if (ask && bid) {
       // [feeRiali,hajm,feettri]
+      if (symbol[0] == "SHIBIRT") {
+        ask[0] = ask[0]/1000
+        bid[0] = bid[0]/1000
+      }
       orderBooks[symbol[0]] = {
         ask : [(ask[0]/ttrBid),...ask],
         bid : [(bid[0]/ttrAsk),...bid]
