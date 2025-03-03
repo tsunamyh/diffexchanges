@@ -20,7 +20,7 @@ app.get('/diff',function (req,res) {
 })
 
 app.get('*',(req,res)=>{
-    res.status(404).send('<h1 align ="center" style="color:red"} >404 Not Found</h1>');
+    res.status(404).send('<h1 align ="center" style="color:red">404 Not Found</h1>');
     console.log(req.method)
     console.log(req.url)
 })
