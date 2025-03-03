@@ -37,6 +37,17 @@ function sortOrderBooks(data: any): Record<string, OrderBook> {
       const bid = data[symbol[0]]?.asks[0];
       if (ask && bid) {
         // [feeRiali,hajm,feettri]
+        // Example::
+/*         {
+          BTCIRT: {
+            ask: [ 84886.73301347709, '78732444870', '0.000173' ],
+            bid: [ 84857.88404828627, '78731144820', '0.00002' ]
+          },
+          ETHIRT: {
+            ask: [ 2211.32046361186, '2050999730', '0.02111' ],
+            bid: [ 2209.52791549903, '2050000000', '0.70537' ]
+          },
+        } */
         if (symbol[0] === "SHIBIRT") {
           ask[0] = ask[0] / 1000;
           bid[0] = bid[0] / 1000;

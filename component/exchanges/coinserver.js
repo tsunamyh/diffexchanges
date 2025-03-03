@@ -38,6 +38,25 @@ function sortOrderBooks(data) {
   return orderBooks
 }
 
+async function getAllOrderBooks() {
+  const coinOrderBooksPromise = httpGetCoinOrderBooks();
+  // const nobOrderBooksPromise = httpGetNobOrderBooks("all");
+  // const ramzOrderBooksPromise = symbols.ramzCoin.map(function (symbol) {
+  //   return httpGetRamzOrderBooks(symbol);
+  // });
+
+  const promisesArray = [coinOrderBooksPromise /*, nobOrderBooksPromise *//*, ...ramzOrderBooksPromise */];
+  // console.log(promisesArray);
+  const allOrderBooks = await Promise.allSettled(promisesArray);
+  if (allOrderBooks[0].status === 'fulfilled') {
+    console.log(allOrderBooks[0].value);
+  } else {
+    console.error('Failed to fetch order books:', allOrderBooks[0].reason);
+  }
+
+  return allOrderBooks;
+}
+getAllOrderBooks()
 module.exports = {
   httpGetCoinOrderBooks,
 };

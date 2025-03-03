@@ -8,7 +8,7 @@ const eventEmmiter = new EventEmitter();
 intervalFunc();
 async function intervalFunc() {
   return setInterval(async function () {
-    const [coinOrderBooks, nobOrderBooks, ...ramzOrderBooks] = await getAllOrderBooks();
+    const [coinOrderBooks, nobOrderBooks/* , ...ramzOrderBooks */] = await getAllOrderBooks();
     // console.log(coinOrderBooks);
     const rowsInfo = [];
     if (coinOrderBooks.status == "fulfilled" && nobOrderBooks.status == "fulfilled") {
